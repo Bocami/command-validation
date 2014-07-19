@@ -3,13 +3,13 @@ using Bocami.Practices.Decorator;
 
 namespace Bocami.Practices.Command.Validation
 {
-    public abstract class ValidationCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>, IDecorator<ICommandHandler<TCommand>>
+    public class ValidationCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>, IDecorator<ICommandHandler<TCommand>>
             where TCommand : class, ICommand
     {
         private readonly ICommandHandler<TCommand> commandHandler;
         private readonly ICommandValidator<TCommand> commandValidator;
 
-        protected ValidationCommandHandlerDecorator(ICommandHandler<TCommand> commandHandler, ICommandValidator<TCommand> commandValidator)
+        public ValidationCommandHandlerDecorator(ICommandHandler<TCommand> commandHandler, ICommandValidator<TCommand> commandValidator)
         {
             if (commandHandler == null)
                 throw new ArgumentNullException("commandHandler");
