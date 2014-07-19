@@ -1,15 +1,22 @@
-﻿using Bocami.Practices.DecoratorPattern;
+﻿using System;
+using Bocami.Practices.Decorator;
 
 namespace Bocami.Practices.Command.Validation
 {
     public abstract class ValidationCommandHandlerDecorator<TCommand> : ICommandHandler<TCommand>, IDecorator<ICommandHandler<TCommand>>
             where TCommand : class, ICommand
     {
-        private ICommandHandler<TCommand> commandHandler;
-        private ICommandValidator<TCommand> commandValidator;
+        private readonly ICommandHandler<TCommand> commandHandler;
+        private readonly ICommandValidator<TCommand> commandValidator;
 
-        public ValidationCommandHandlerDecorator(ICommandHandler<TCommand> commandHandler, ICommandValidator<TCommand> commandValidator)
+        protected ValidationCommandHandlerDecorator(ICommandHandler<TCommand> commandHandler, ICommandValidator<TCommand> commandValidator)
         {
+            if (commandHandler == null)
+                throw new ArgumentNullException("commandHandler");
+
+            if (commandValidator == null)
+                throw new ArgumentNullException("commandValidator");
+
             this.commandHandler = commandHandler;
             this.commandValidator = commandValidator;
         }

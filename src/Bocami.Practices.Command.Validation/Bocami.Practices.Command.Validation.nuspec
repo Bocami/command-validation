@@ -12,10 +12,5 @@
     <description>Command Validation</description>
     <copyright>Copyright 2014</copyright>
     <tags>Command Query Separation</tags>
-    <dependencies>
-      <dependency id="Bocami.Practices.Command" version="1.0" />
-      <dependency id="Bocami.Practices.Validation" version="1.0" />
-      <dependency id="Bocami.Practices.DecoratorPattern" version="1.0" />
-    </dependencies>
   </metadata>
 </package>

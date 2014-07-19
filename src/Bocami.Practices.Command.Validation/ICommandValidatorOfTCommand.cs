@@ -2,8 +2,8 @@
 
 namespace Bocami.Practices.Command.Validation
 {
-    public interface ICommandValidator<TCommand> : IValidator<TCommand>
-        where TCommand : class, ICommand
+    public interface ICommandValidator<in TCommand> : IValidator<TCommand>
+        where TCommand : ICommand
     {
     }
 }
